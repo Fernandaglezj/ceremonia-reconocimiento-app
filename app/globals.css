@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+/* Background maya - SOLUCION DEFINITIVA PARA EVITAR DIVISIONES */
+.maya-background {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.maya-background::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/maya-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+/* Fuentes mayas/ancestrales usando fuentes del sistema */
+.maya-font {
+  font-family: "Times New Roman", "Georgia", "Palatino", "Book Antiqua", serif;
+}
+
+/* Nueva fuente para el ritual - usando fuentes del sistema */
+.maya-ritual-title {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.maya-text {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+/* Estilos para los iconos de fuego de evaluación */
+.fire-rating-btn {
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.fire-unselected {
+  filter: grayscale(100%) brightness(0.4);
+  opacity: 0.6;
+  transform: scale(1);
+}
+
+.fire-unselected:hover {
+  filter: grayscale(50%) brightness(0.7);
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.fire-selected {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.1);
+  animation: fire-glow 2s ease-in-out infinite;
+  text-shadow: 0 0 5px #ff4500, 0 0 10px #ff6500, 0 0 15px #ff8500, 0 0 20px #ffa500, 0 0 25px #ffb500;
+}
+
+.fire-selected:hover {
+  transform: scale(1.2);
+  animation: fire-intense-glow 1s ease-in-out infinite;
+}
+
+@keyframes fire-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 5px #ff4500, 0 0 10px #ff6500, 0 0 15px #ff8500, 0 0 20px #ffa500;
+  }
+  50% {
+    text-shadow: 0 0 8px #ff4500, 0 0 15px #ff6500, 0 0 20px #ff8500, 0 0 25px #ffa500, 0 0 30px #ffb500;
+  }
+}
+
+@keyframes fire-intense-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 8px #ff4500, 0 0 15px #ff6500, 0 0 20px #ff8500, 0 0 25px #ffa500, 0 0 30px #ffb500;
+  }
+  50% {
+    text-shadow: 0 0 12px #ff4500, 0 0 20px #ff6500, 0 0 25px #ff8500, 0 0 30px #ffa500, 0 0 35px #ffb500, 0 0 40px
+      #ffc500;
+  }
+}
+
+/* Efectos de hover personalizados */
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+}
+
+/* Animaciones personalizadas */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #78350f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Efecto 3D Beveled para el título - LETRAS BLANCAS */
+.neon-title {
+  font-family: "Impact", "Arial Black", "Helvetica", sans-serif;
+  font-weight: 900;
+  color: #ffffff;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.1em;
+  text-align: center;
+  display: block;
+  width: 100%;
+
+  /* Efecto 3D beveled con sombras doradas */
+  text-shadow:
+    1px 1px 0px #d97706,
+    2px 2px 0px #b45309,
+    3px 3px 0px #92400e,
+    4px 4px 0px #78350f,
+    5px 5px 0px #5c2d11,
+    6px 6px 0px #451a03,
+    /* Sombra de profundidad */
+    7px 7px 10px rgba(0, 0, 0, 0.8),
+    /* Resplandor dorado */
+    0 0 5px #fbbf24,
+    0 0 10px #f59e0b,
+    0 0 15px #d97706,
+    0 0 20px #b45309;
+
+  /* Animación sutil del resplandor */
+  animation: white-text-glow 4s ease-in-out infinite;
+
+  /* Borde dorado para mayor definición */
+  -webkit-text-stroke: 1px #d97706;
+}
+
+@keyframes white-text-glow {
+  0%,
+  100% {
+    text-shadow:
+      1px 1px 0px #d97706,
+      2px 2px 0px #b45309,
+      3px 3px 0px #92400e,
+      4px 4px 0px #78350f,
+      5px 5px 0px #5c2d11,
+      6px 6px 0px #451a03,
+      7px 7px 10px rgba(0, 0, 0, 0.8),
+      0 0 5px #fbbf24,
+      0 0 10px #f59e0b,
+      0 0 15px #d97706,
+      0 0 20px #b45309;
+  }
+
+  50% {
+    text-shadow:
+      1px 1px 0px #d97706,
+      2px 2px 0px #b45309,
+      3px 3px 0px #92400e,
+      4px 4px 0px #78350f,
+      5px 5px 0px #5c2d11,
+      6px 6px 0px #451a03,
+      7px 7px 10px rgba(0, 0, 0, 0.8),
+      0 0 8px #fbbf24,
+      0 0 15px #f59e0b,
+      0 0 20px #d97706,
+      0 0 25px #b45309,
+      0 0 30px #fbbf24;
+  }
+}
+
+/* Efecto de resplandor de fondo dorado */
+.neon-title::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+  z-index: -1;
+  border-radius: 20px;
+  filter: blur(15px);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .neon-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+    text-shadow:
+      1px 1px 0px #d97706,
+      2px 2px 0px #b45309,
+      3px 3px 0px #92400e,
+      4px 4px 0px #78350f,
+      5px 5px 8px rgba(0, 0, 0, 0.8),
+      0 0 3px #fbbf24,
+      0 0 6px #f59e0b,
+      0 0 10px #d97706;
+    -webkit-text-stroke: 0.5px #d97706;
+  }
+
+  /* Fondo optimizado para móviles */
+  .maya-background::before {
+    transform: scale(1.2);
+  }
+
+  /* Iconos de fuego más pequeños en móviles */
+  .fire-rating-btn {
+    font-size: 1.5rem;
+    padding: 0.3rem;
+  }
+}
+
+/* Mejoras adicionales para pantallas de alta resolución */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .neon-title {
+    text-shadow:
+      0.5px 0.5px 0px #d97706,
+      1px 1px 0px #b45309,
+      1.5px 1.5px 0px #92400e,
+      2px 2px 0px #78350f,
+      2.5px 2.5px 0px #5c2d11,
+      3px 3px 0px #451a03,
+      3.5px 3.5px 5px rgba(0, 0, 0, 0.8),
+      0 0 3px #fbbf24,
+      0 0 6px #f59e0b,
+      0 0 10px #d97706,
+      0 0 15px #b45309;
+  }
+
+  /* Fondo optimizado para pantallas de alta resolución */
+  .maya-background::before {
+    transform: scale(1.15);
+  }
+}
