@@ -122,8 +122,7 @@ export default function EvaluationForm({ member, team, evaluator, onComplete, on
             {/* Instrucciones */}
             <div className="mb-8">
               <p className="text-amber-100 text-lg leading-relaxed">
-                Por favor, evalúa a <strong className="text-yellow-300">{member.name}</strong> en las siguientes áreas
-                usando una escala del 1 al 5, donde 1 es "Necesita mejorar" y 5 es "Excelente".
+                Es momento de reconocer el paso de quienes caminan a nuestro lado. Comparte cómo has sentido la energía de <strong className="text-yellow-300">{member.name}</strong> en este ciclo compartido, usando una escala del 1 al 5, donde 1 es una chispa tenue y 5 un fuego pleno que deja huella.
               </p>
             </div>
 
